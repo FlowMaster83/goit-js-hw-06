@@ -13,11 +13,15 @@ const images = [
   },
 ];
 
-const galleryRef = images.map((element) => {
-  return `<li><img src=${element.src} alt=${element.alt} width = '100px' height = '100px'></li>`
-})
+const galleryElements = document.querySelector('.gallery');
+	
 
-const galleryRefString = galleryRef.join();
+const allImages = images.map((item) => {
+const galleryImages = `<li><img src='${item.url}' alt='${item.alt}' width = 280 height = 180 /></li>`;
+return galleryImages;
+});
+galleryElements.insertAdjacentHTML('afterbegin', allImages .join(''));
 
-const galleryNewRef = document.querySelector('gallery');
-galleryNewRef.insertAdjacentHTML('afterbegin', galleryRef);
+galleryElements.style.display = 'flex';
+galleryElements.style.listStyle = 'none';
+galleryElements.style.gap = '35px';
